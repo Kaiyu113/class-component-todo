@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import TodoList from "./todolist/index";
-import Cal from "./calculator/index";
 import CalContainer from "./calConnect/connect";
-import store from "./redux/store";
 export default class App extends Component {
   render() {
     return (
@@ -10,9 +8,8 @@ export default class App extends Component {
         {/* 添加路由 */}
 
         <TodoList />
-        <CalContainer store={store}>
-          <Cal />
-        </CalContainer>
+        {/* 不需要监控redux去更新了，因为使用了container传props，props更新，所有的child更新 */}
+        <CalContainer />
       </div>
     );
   }
