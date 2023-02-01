@@ -1,0 +1,12 @@
+.list {
+  background-color: aquamarine;
+  width: 100px;
+  height: 60px;
+  overflow: auto;
+}
+.container {
+  background-color: rgb(140, 184, 169);
+  height: 150px;
+  width: 200px;
+  margin: auto;
+}
