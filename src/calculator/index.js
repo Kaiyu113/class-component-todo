@@ -1,30 +1,29 @@
 import React, { Component } from "react";
 import hello from "./styles.module.css";
-import store from "../redux/store";
-import { add, sub, asyncAdd } from "../redux/calAction";
 export default class Cal extends Component {
   add = () => {
     const { value } = this.dropdown;
-    store.dispatch(add(value * 1));
+    this.props.add(value * 1);
   };
   sub = () => {
     const { value } = this.dropdown;
-    store.dispatch(sub(value));
+    this.props.sub(value * 1);
   };
   oddAdd = () => {
-    if (store.getState() % 2 === 1) {
+    if (this.props.count % 2 === 1) {
       const { value } = this.dropdown;
-      store.dispatch(add(value * 1));
+      this.props.add(value * 1);
     }
   };
   asyncAdd = () => {
     const { value } = this.dropdown;
-    store.dispatch(asyncAdd(value * 1, 1000));
+    this.props.asyncAdd(value * 1, 1000);
   };
   render() {
+    const { count } = this.props;
     return (
       <div className={hello.container}>
-        <div>{store.getState()}</div>
+        <div>{count}</div>
         <select ref={(e) => (this.dropdown = e)}>
           <option>1</option>
           <option>2</option>
