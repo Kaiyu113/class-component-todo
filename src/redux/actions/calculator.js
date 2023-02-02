@@ -1,5 +1,5 @@
-import { ADD, SUB } from "./constant";
-import store from "./store";
+import { ADD, SUB } from "../constant";
+import store from "../store";
 //同步
 export const add = (data) => ({ type: ADD, data });
 export const sub = (data) => ({ type: SUB, data });

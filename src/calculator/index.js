@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import hello from "./styles.module.css";
 import { connect } from "react-redux";
-import { add, sub, asyncAdd } from "../redux/calAction";
+import { add, sub, asyncAdd } from "../redux/actions/calculator";
 //整合在一起
 class Cal extends Component {
   add = () => {
@@ -23,9 +23,10 @@ class Cal extends Component {
     this.props.asyncAdd(value * 1, 1000);
   };
   render() {
-    const { count } = this.props;
+    const { count, person } = this.props;
     return (
       <div className={hello.container}>
+        <h1>total person {person.length}</h1>
         <div>{count}</div>
         <select ref={(e) => (this.dropdown = e)}>
           <option>1</option>
@@ -42,7 +43,8 @@ class Cal extends Component {
 }
 export default connect(
   (state) => ({
-    count: state,
+    count: state.calReducer,
+    person: state.personReducer,
   }),
   {
     add,
