@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import hello from "./styles.module.css";
-
-export default class Cal extends Component {
+import { connect } from "react-redux";
+import { add, sub, asyncAdd } from "../redux/calAction";
+//整合在一起
+class Cal extends Component {
   add = () => {
     const { value } = this.dropdown;
     this.props.add(value * 1);
@@ -38,3 +40,13 @@ export default class Cal extends Component {
     );
   }
 }
+export default connect(
+  (state) => ({
+    count: state,
+  }),
+  {
+    add,
+    sub,
+    asyncAdd,
+  }
+)(Cal);
